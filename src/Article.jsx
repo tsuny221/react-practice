@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Article = (props) => {
+  const [isPublished, togglePublished] = useState(true)
   let publishState = "";
-  if (props.isPublished) {
+  if (isPublished) {
     publishState = "公開"
   } else {
     publishState = "非公開"
@@ -13,6 +14,8 @@ const Article = (props) => {
       <p>順番は{props.order}です。</p>
       <p>著者:{props.author}</p>
       <p>{publishState}</p>
+      <label htmlFor="check">公開状態:</label>
+      <input type="checkbox" checked={isPublished} id="check" onClick={() => togglePublished(!isPublished)}/>
     </div>
   )
 };
